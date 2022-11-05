@@ -3,8 +3,6 @@ This GitHub Repository is for our UIUC CS225 group project. The members include 
 
 # Team Contract
 
-# Team Contract
-
 ## Communication
 1. **Team Meetings** 
 
