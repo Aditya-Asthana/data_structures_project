@@ -5,19 +5,21 @@
 #include <map>
 using namespace std;
 
+#include "Edge.h"
+
 struct Node {
     double latitude;
     double longitude;
     string name;
-    unordered_map<string, Node> destinations;
+    unordered_map<string, Edge> destinations;
 };
 
 class POIMap {
 
     public:
         map<string, Node> interest_map;
-        void insertNode();
-        void insertEdge();
+        void insertNode(string name, double lat, double lon);
+        void insertEdge(string source, string dest, double dist);
 
     private:
         double findDistance(string source, string dest);

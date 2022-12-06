@@ -1,5 +1,21 @@
 #include "POIMap.h"
 #include <math.h>
+#include "Edge.h"
+
+void POIMap::insertNode(string name, double lat, double lon) {
+    Node POI;
+    POI.name = name;
+    POI.latitude = lat;
+    POI.longitude = lon;
+    interest_map.insert(pair<string, Node>(name, POI));
+}
+
+void POIMap::insertEdge(string source, string dest, double dist) {
+    Edge POI(source, dest, dist);
+    if (interest_map[source].destinations.find(dest) == interest_map[source].destinations.end()) {
+        interest_map[source].destinations.insert(pair<string, Edge>(dest, POI));
+    }
+}
 
 double POIMap::findDistance(string source, string dest) {
     double sLat = interest_map[source].latitude;
