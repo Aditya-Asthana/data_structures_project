@@ -9,6 +9,7 @@ class POIGraph {
     public:
         POIGraph();
         void insertPOIs();
+        void insertDistances();
         vector<string> BFS(int source);
         vector<string> BFS(int source, int dest);
         tuple<vector<string>> dijkstra(int source, int dest);

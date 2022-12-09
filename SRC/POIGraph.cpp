@@ -5,6 +5,15 @@
 
 using namespace std;
 
+void POIGraph::insertPOIs() {
+    //read from data and use .insertNode(id, poi name, latitude, longitude)
+}
+
+void POIGraph::insertDistances() {
+    //read from data and use .insertEdge(start id, end id, distance)
+    //use findDistance(source id, dest id) to find the distance
+}
+
 vector<string> POIGraph::BFS(int source) {
     vector<bool> visited(20558);
     for (int i = 0; i < 20558; i++) {
