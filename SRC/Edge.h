@@ -7,15 +7,15 @@ class Edge {
 
     public:
 
-        Edge(string source, string dest): dest_(dest), source_(source) {}
-        Edge(string source, string dest, double dist): dest_(dest), source_(source), dist_(dist) {}
+        Edge(int source, int dest): dest_(dest), source_(source) {}
+        Edge(int source, int dest, double dist): dest_(dest), source_(source), dist_(dist) {}
 
-        string getSource() {return source_;}
-        string getDest() {return dest_;}
+        int getSource() {return source_;}
+        int getDest() {return dest_;}
         double getDist() {return dist_;}
 
-        void setSource(string source) {source_ = source;}
-        void setDest(string dest) {dest_ = dest;}
+        void setSource(int source) {source_ = source;}
+        void setDest(int dest) {dest_ = dest;}
         void setDist(double dist) {dist_ = dist;}
 
         bool operator < (const Edge& other) const {
@@ -31,7 +31,7 @@ class Edge {
     private:
     
         double dist_;
-        string source_;
-        string dest_;
+        int source_;
+        int dest_;
         
 };

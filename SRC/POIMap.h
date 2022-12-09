@@ -8,20 +8,21 @@ using namespace std;
 #include "Edge.h"
 
 struct Node {
+    int id;
     double latitude;
     double longitude;
     string name;
-    unordered_map<string, Edge> destinations;
+    unordered_map<int, Edge> destinations;
 };
 
 class POIMap {
 
     public:
-        map<string, Node> interest_map;
-        void insertNode(string name, double lat, double lon);
-        void insertEdge(string source, string dest, double dist);
+        map<int, Node> interest_map;
+        void insertNode(int id, string name, double lat, double lon);
+        void insertEdge(int source, int dest, double dist);
 
     private:
-        double findDistance(string source, string dest);
+        double findDistance(int source, int dest);
 
 };

@@ -1,5 +1,11 @@
 {
     "files.associations": {
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "memory": "cpp",
+        "string": "cpp",
+        "type_traits": "cpp",
+        "vector": "cpp",
+        "unordered_map": "cpp",
+        "queue": "cpp"
     }
 }

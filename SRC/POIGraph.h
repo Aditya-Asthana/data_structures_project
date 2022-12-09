@@ -1,4 +1,5 @@
 #pragma once
+#include "POIMap.h"
 
 #include <vector>
 #include <string>
@@ -8,10 +9,11 @@ class POIGraph {
     public:
         POIGraph();
         void insertPOIs();
-        vector<string> BFS(string source);
-        vector<string> BFS(string source, string dest);
-        tuple<vector<string>> dijkstra(string source, string dest);
+        vector<string> BFS(int source);
+        vector<string> BFS(int source, int dest);
+        tuple<vector<string>> dijkstra(int source, int dest);
     private:
         string file_;
+        POIMap map_;
 
 };
