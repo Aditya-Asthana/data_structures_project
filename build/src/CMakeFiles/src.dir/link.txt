@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/POIGraph.cpp.o CMakeFiles/src.dir/POIMap.cpp.o
+/usr/bin/ranlib libsrc.a
