@@ -7,8 +7,8 @@ class Edge {
 
     public:
 
-        Edge(int source, int dest): dest_(dest), source_(source) {}
-        Edge(int source, int dest, double dist): dest_(dest), source_(source), dist_(dist) {}
+        Edge(int source, int dest): source_(source), dest_(dest) {}
+        Edge(int source, int dest, double dist): dist_(dist) , source_(source), dest_(dest) {}
 
         int getSource() {return source_;}
         int getDest() {return dest_;}
