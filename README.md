@@ -139,7 +139,7 @@ Week 6:
 In this week, we will finish our testing that we did the week before. We will also finish the front end. We will also record our project presentation and submit it.
 
 
-##Documentation
+## Documentation
 
 /entry
 -Contain main.cpp, which we used to run all algorithms, and read files. This part runs the overall project and shows the functionality of the project.
