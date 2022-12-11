@@ -1,0 +1,11 @@
+/workspaces/data_structures_project/build/CMakeFiles/test.dir
+/workspaces/data_structures_project/build/CMakeFiles/main.dir
+/workspaces/data_structures_project/build/CMakeFiles/edit_cache.dir
+/workspaces/data_structures_project/build/CMakeFiles/rebuild_cache.dir
+/workspaces/data_structures_project/build/SRC/CMakeFiles/src.dir
+/workspaces/data_structures_project/build/SRC/CMakeFiles/edit_cache.dir
+/workspaces/data_structures_project/build/SRC/CMakeFiles/rebuild_cache.dir
+/workspaces/data_structures_project/build/lib/CMakeFiles/lodepng.dir
+/workspaces/data_structures_project/build/lib/CMakeFiles/cs225.dir
+/workspaces/data_structures_project/build/lib/CMakeFiles/edit_cache.dir
+/workspaces/data_structures_project/build/lib/CMakeFiles/rebuild_cache.dir
