@@ -10,7 +10,7 @@ void POIGraph::insertPOIs() {
 }
 
 void POIGraph::insertDistances() {
-    //read from data and use .insertEdge(start id, end id, distance)
+    //read from data and use .insertEdge(source id, end id, distance)
     //use findDistance(source id, dest id) to find the distance
 }
 
@@ -95,4 +95,72 @@ vector<string> POIGraph::BFS(int source, int dest) {
 
     return rv;
 }
+
+tuple<vector<string>, double> POIGraph::dijkstra(int source, int dest) {
+
+    // @TODO: Insert Edge Cases
+
+    vector<double> dist(20558);
+    vector<int> prev(20558);
+    vector<int> unvisited;
+
+    for (auto it = map_.interest_map.begin(); it != map_.interest_map.end(); it++) {
+        dist[it->first] = INT_MAX;
+        unvisited.push_back(it->first);
+    }
+
+    prev[source] = source;
+    dist[source] = 0;
+
+    int curr;
+
+    while (!unvisited.empty()) {
+        double minDistance = INT_MAX;
+        int minIndex;
+        for (unsigned int i  = 0; i < unvisited.size(); i++) {
+            if (dist[unvisited[i]] < minDistance) {
+                minDistance = dist[unvisited[i]];
+                minIndex = i;
+            }
+        }
+
+        curr = unvisited[minIndex];
+        unvisited.erase(unvisited.begin()+minIndex);
+
+        if (curr == dest) {
+            break;
+        }
+
+        for (auto it=map_.interest_map[curr].destinations.begin(); it != map_.interest_map[curr].destinations.end(); it++) {    //  search all departures from curr airport
+            double temp = dist[curr] + (it->second).getDist();
+            if (temp < dist[it->first]) {
+                dist[it->first] = temp;
+                prev[it->first] = curr;
+            }
+        }
+    }
+
+    if (curr != dest) {
+        tuple<vector<string>,double> T;
+        return T;
+    }
+
+    stack<int> idStack;
+    while (curr != source) {
+        idStack.push(curr);
+        curr = prev[curr];
+    }
+
+    idStack.push(source);
+    vector<string> path;
+
+    while (!idStack.empty()) {
+        int temp = idStack.top();
+        path.push_back(map_.interest_map[temp].name);
+        idStack.pop();
+    }
+
+    return tuple<vector<string>,double> (path, dist[dest]);
+}
+
 

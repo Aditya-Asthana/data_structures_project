@@ -13,10 +13,12 @@ class Edge {
         int getSource() {return source_;}
         int getDest() {return dest_;}
         double getDist() {return dist_;}
+        int getID() {return id_;}
 
         void setSource(int source) {source_ = source;}
         void setDest(int dest) {dest_ = dest;}
         void setDist(double dist) {dist_ = dist;}
+        void setID(int id) {id_ = id;}
 
         bool operator < (const Edge& other) const {
             return dist_ < other.dist_;
@@ -33,5 +35,6 @@ class Edge {
         double dist_;
         int source_;
         int dest_;
+        int id_;
         
 };
