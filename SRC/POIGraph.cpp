@@ -2,11 +2,29 @@
 #include <queue>
 #include <string>
 #include <stack>
+#include <iostream>
+#include <fstream>
+#include <bits/stdc++.h>
+
 
 using namespace std;
 
+POIGraph::POIGraph(const string& poiFile) {
+    file_ = poiFile;
+    insertPOIs();
+}
+
 void POIGraph::insertPOIs() {
-    //read from data and use .insertNode(id, poi name, latitude, longitude)
+    ifstream infile(file_.c_str());
+    string lines;
+
+    while (getline(infile, lines)) {
+        vector<string> line = parseLine(lines);
+        vector<string> loc = parseLoc(line[1]);
+        map_.insertNode(stoi(line[0]), line[2], stod(loc[0]), stod(loc[1]));
+    }
+
+    infile.close();
 }
 
 void POIGraph::insertDistances() {
@@ -175,5 +193,27 @@ tuple<vector<string>, double> POIGraph::middle(int source, int mid, int dest) {
     path.insert(path.end(), get<0>(second).begin() + 1, get<0>(second).end());
     double dist = get<1>(first) + get<1>(second);
     tuple<vector<string>, double> rv(path, dist);
+    return rv;
+}
+
+vector<string> POIGraph::parseLoc(const string& line) {
+    vector<string> rv;
+    stringstream ss(line);
+    while (ss.good()) {
+        string substr;
+        getline(ss, substr, ' ');
+        rv.push_back(substr);
+    }
+    return rv;
+}
+
+vector<string> POIGraph::parseLine(const string& line) {
+    vector<string> rv;
+    stringstream ss(line);
+    while (ss.good()) {
+        string substr;
+        getline(ss, substr, ',');
+        rv.push_back(substr);
+    }
     return rv;
 }
