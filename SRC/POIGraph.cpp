@@ -96,3 +96,20 @@ vector<string> POIGraph::BFS(int source, int dest) {
     return rv;
 }
 
+tuple<vector<string>, double> POIGraph::middle(int source, int mid, int dest) {
+    tuple<vector<string>, double> first = dijkstra(source, mid);
+    tuple<vector<string>, double> second = dijkstra(mid, dest);
+    if (get<0>(first).empty() || get<0>(second).empty()) {
+        tuple<vector<string>, double> empty;
+        return empty;
+    }
+
+    vector<string> path = get<0>(first);
+    path.insert(path.end(), get<0>(second).begin() + 1, get<0>(second).end());
+    double dist = get<1>(first) + get<1>(second);
+    tuple<vector<string>, double> rv(path, dist);
+    return rv;
+}
+
+
+
