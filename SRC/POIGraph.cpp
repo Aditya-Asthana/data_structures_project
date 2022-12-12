@@ -12,6 +12,7 @@ using namespace std;
 POIGraph::POIGraph(const string& poiFile) {
     file_ = poiFile;
     insertPOIs();
+    insertDistances();
 }
 
 void POIGraph::insertPOIs() {
@@ -34,18 +35,16 @@ void POIGraph::insertDistances() {
     string lines;
 
     while (getline(infile, lines)) {
-        vector<string> line = parseLine(lines);
-        vector<string> loc = parseLoc(line[1]);
-        while (getline(infile, lines)) {
-            vector<string> in_line = parseLine(lines);
-            vector<string> in_loc = parseLoc(line[1]);
-
-            if (in_line != line && in_loc != loc) {
-                double d = map_.findDistance(stoi(line[0]), stoi(in_line[0]))
-                map_.insertEdge(stoi(line[0]), stoi(in_line[0]), d);
+        for (int i = 0; i < 19; i++) {
+            for (int j = 0; j < 19; j++) {
+                if (i != j) {
+                    double dist = map_.findDistance(i, j);
+                    map_.insertEdge(i, j, dist);
+                } 
             }
         }
     }
+
     infile.close();
 
 }

@@ -21,8 +21,6 @@ class POIMap {
         map<int, Node> interest_map;
         void insertNode(int id, string name, double lat, double lon);
         void insertEdge(int source, int dest, double dist);
-
-    private:
         double findDistance(int source, int dest);
 
 };
