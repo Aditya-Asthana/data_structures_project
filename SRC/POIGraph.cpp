@@ -30,6 +30,24 @@ void POIGraph::insertPOIs() {
 void POIGraph::insertDistances() {
     //read from data and use .insertEdge(source id, end id, distance)
     //use findDistance(source id, dest id) to find the distance
+    ifstream infile(file_.c_str());
+    string lines;
+
+    while (getline(infile, lines)) {
+        vector<string> line = parseLine(lines);
+        vector<string> loc = parseLoc(line[1]);
+        while (getline(infile, lines)) {
+            vector<string> in_line = parseLine(lines);
+            vector<string> in_loc = parseLoc(line[1]);
+
+            if (in_line != line && in_loc != loc) {
+                double d = map_.findDistance(stoi(line[0]), stoi(in_line[0]))
+                map_.insertEdge(stoi(line[0]), stoi(in_line[0]), d);
+            }
+        }
+    }
+    infile.close();
+
 }
 
 vector<string> POIGraph::BFS(int source) {

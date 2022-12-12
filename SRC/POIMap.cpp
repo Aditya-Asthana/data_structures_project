@@ -12,6 +12,7 @@ void POIMap::insertNode(int id, string name, double lat, double lon) {
 }
 
 void POIMap::insertEdge(int source, int dest, double dist) {
+    //check if edge already exists
     Edge POI(source, dest, dist);
     if (interest_map[source].destinations.find(dest) == interest_map[source].destinations.end()) {
         interest_map[source].destinations.insert(pair<int, Edge>(dest, POI));
