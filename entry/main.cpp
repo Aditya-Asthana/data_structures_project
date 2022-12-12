@@ -1,12 +1,39 @@
 #include "../SRC/POIGraph.h"
 #include "../SRC/POIMap.h"
+#include <vector>
+#include <string>
+using namespace std;
 
 #include <iostream>
 
 int main() {
-    POIGraph graph = POIGraph("../POIs/POI_Parsed.csv");
+    POIGraph graph = POIGraph("../POIs/example.csv");
+    std::cout << "Number of Nodes : " << graph.getMap().interest_map.size() << std::endl;
+    int count = 0;
     for(const auto& [k, v] : graph.getMap().interest_map) {
-        std::cout << v.latitude << std::endl;
+        count += v.destinations.size();
     }
+    std::cout << "Number of Edges: " << count << std::endl;
+
+    vector<string> vect = graph.BFS(0);
+    std::cout << "Source BFS" << std::endl;
+
+    for (string s : vect) {
+        std:: cout << s << std::endl;
+    }
+
+    std::cout << "Source + Dest BFS" << std::endl;
+    vector<string> vect2 = graph.BFS(0, 5);
+
+    for (string s : vect2) {
+        std::cout << s << std::endl;
+    }
+
+    tuple<vector<string>, double> dj = graph.middle(0, 2, 5);
+    for (string s : get<0>(dj)) {
+        std::cout << s << std::endl;
+    }    
+    std::cout << get<1>(dj) << std::endl;
+
     return 0;
 }
