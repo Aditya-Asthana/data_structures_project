@@ -43,5 +43,7 @@ int main() {
     }    
     std::cout << get<1>(dj) << std::endl;
 
-    return 0;
+    std::cout << "Centrality" << std::endl;
+    int check = graph.Centrality("1 ASTOR PLAZA");
+    std::cout << check << std::endl;
 }

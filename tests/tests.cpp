@@ -79,3 +79,9 @@ TEST_CASE("Check Djikstra", "weight=[5]") {
         REQUIRE(test[i] == get<0>(dj)[i]);
     }    
 }
+
+TEST_CASE("Check Centrality", "weight=[5]") {
+    POIGraph graph = POIGraph("../POIs/tests.csv");
+    int check = graph.Centrality("1 ASTOR PLAZA");
+    REQUIRE(check == 7);
+}

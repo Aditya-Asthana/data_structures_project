@@ -8,4 +8,6 @@ add_test( [==[Check BFS two arguments]==] /workspaces/data_structures_project/bu
 set_tests_properties( [==[Check BFS two arguments]==] PROPERTIES WORKING_DIRECTORY /workspaces/data_structures_project/build)
 add_test( [==[Check Djikstra]==] /workspaces/data_structures_project/build/test [==[Check Djikstra]==]  )
 set_tests_properties( [==[Check Djikstra]==] PROPERTIES WORKING_DIRECTORY /workspaces/data_structures_project/build)
-set( test_TESTS [==[Check Number of Nodes]==] [==[Check Number of Edges]==] [==[Check BFS one argument]==] [==[Check BFS two arguments]==] [==[Check Djikstra]==])
+add_test( [==[Check Centrality]==] /workspaces/data_structures_project/build/test [==[Check Centrality]==]  )
+set_tests_properties( [==[Check Centrality]==] PROPERTIES WORKING_DIRECTORY /workspaces/data_structures_project/build)
+set( test_TESTS [==[Check Number of Nodes]==] [==[Check Number of Edges]==] [==[Check BFS one argument]==] [==[Check BFS two arguments]==] [==[Check Djikstra]==] [==[Check Centrality]==])
