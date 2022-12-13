@@ -1,5 +1,5 @@
 # CS 225 Final Project - Navigating through New York
-This GitHub Repository is for our UIUC CS225 group project. The members include Aditya Asthana, Agrim Kataria, Prem Dhoot, and Tabeeb Khandaker.
+This GitHub Repository is for our UIUC CS225 group project. The members include Aditya Asthana, Agrim Kataria, Prem Dhoot, and Tabeeb Khandaker. Here is the link to our video presentation https://drive.google.com/file/d/19PQiv0kaAVQzGbKSYvF_OJIIOdTchyb6/view?usp=sharing.
 
 # What is our project?
 Our project's leading question was "What is the best way to get between points of interest in New York City?". We utilize Djikstra's Algorithm to find the shortest path between points of interest and Betweenness Centrality to find which points of interest would be the best starting point. We implement a Breadth-First-Search traversal to acheive this. Our dataset of points of interest come from NYC Open Data, and can be found at the following link: https://data.cityofnewyork.us/City-Government/Points-Of-Interest/rxuy-2muj.
