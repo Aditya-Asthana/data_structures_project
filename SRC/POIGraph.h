@@ -17,6 +17,8 @@ class POIGraph {
         vector<string> parseLine(const string& line);
         vector<string> parseLoc(const string& line);
         POIMap getMap() {return map_;}
+        int Centrality (string poi) {
+
     private:
         string file_;
         POIMap map_;

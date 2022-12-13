@@ -234,3 +234,22 @@ vector<string> POIGraph::parseLine(const string& line) {
     }
     return rv;
 }
+
+int POIGraph::Centrality (string poi) {
+    unordered_map<string, int> check;
+    // Go through every combination of two vertices
+    for(unsigned i = 0; i < map_.interest_map.size()-1; i++){
+        for(unsigned j = i+1; j < map_.interest_map.size(); j++){
+            tuple<vector<string>, double> retval = dijkstra(map_.interest_map[i].id, map_.interest_map[j].id);
+            vector<string> path = get<0>(retval);
+            if(path.size() > 2){
+                for(unsigned k = 1; k < path.size()-1; k++){
+                    check[path[k]] = check[path[k]] + 1; //for each inner node increment their centrality measure
+                }
+            }
+            
+        }
+    }
+    return check[poi]; //return the centrality measure of the requested vertex
+}
+
