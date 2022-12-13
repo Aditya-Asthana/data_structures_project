@@ -35,11 +35,12 @@ void POIGraph::insertDistances() {
     string lines;
 
     while (getline(infile, lines)) {
-        for (int i = 0; i < 19; i++) {
-            for (int j = 0; j < 19; j++) {
+        for (unsigned i = 0; i < map_.interest_map.size(); i++) {
+            for (unsigned j = 0; j < map_.interest_map.size(); j++) {
                 if (i != j) {
                     double dist = map_.findDistance(i, j);
                     map_.insertEdge(i, j, dist);
+                    j++;
                 } 
             }
         }

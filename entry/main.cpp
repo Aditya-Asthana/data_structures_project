@@ -7,7 +7,7 @@ using namespace std;
 #include <iostream>
 
 int main() {
-    POIGraph graph = POIGraph("../POIs/example.csv");
+    POIGraph graph = POIGraph("../POIs/tests.csv");
     std::cout << "Number of Nodes : " << graph.getMap().interest_map.size() << std::endl;
     int count = 0;
     for(const auto& [k, v] : graph.getMap().interest_map) {
@@ -23,11 +23,19 @@ int main() {
     }
 
     std::cout << "Source + Dest BFS" << std::endl;
-    vector<string> vect2 = graph.BFS(0, 5);
+    vector<string> vect2 = graph.BFS(0, 4);
+
+    std::cout << vect2.size() << std::endl;
 
     for (string s : vect2) {
         std::cout << s << std::endl;
     }
+
+    // for (unsigned i = 0; i < vect2.size(); i++) {
+    //     std::cout << vect2[i] << std::endl;
+    // }
+
+    std::cout << "Dijkstra" << std::endl;
 
     tuple<vector<string>, double> dj = graph.middle(0, 2, 5);
     for (string s : get<0>(dj)) {
