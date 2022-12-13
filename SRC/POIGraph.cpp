@@ -252,4 +252,5 @@ int POIGraph::Centrality (string poi) {
         }
     }
     return check[poi]; //return the centrality
+}
 
