@@ -2,7 +2,7 @@
 #include <math.h>
 #include "Edge.h"
 
-void POIMap::insertNode(int id, string name, double lat, double lon) {
+void POIMap::insertNode(int id, string name, double lat, double lon) { //inserts a node on the groph
     Node POI;
     POI.id = id;
     POI.name = name;
@@ -11,15 +11,14 @@ void POIMap::insertNode(int id, string name, double lat, double lon) {
     interest_map.insert(pair<int, Node>(id, POI));
 }
 
-void POIMap::insertEdge(int source, int dest, double dist) {
-    //check if edge already exists
+void POIMap::insertEdge(int source, int dest, double dist) { //inserts an edge on teh grpah between two nodes
     Edge POI(source, dest, dist);
     if (interest_map[source].destinations.find(dest) == interest_map[source].destinations.end()) {
         interest_map[source].destinations.insert(pair<int, Edge>(dest, POI));
     }
 }
 
-double POIMap::findDistance(int source, int dest) {
+double POIMap::findDistance(int source, int dest) { //finds the distance between two nodes using their coordinates
     double sLat = interest_map[source].latitude;
     double sLong = interest_map[source].longitude;
     double dLat = interest_map[dest].latitude;

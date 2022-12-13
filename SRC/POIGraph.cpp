@@ -9,13 +9,13 @@
 
 using namespace std;
 
-POIGraph::POIGraph(const string& poiFile) {
+POIGraph::POIGraph(const string& poiFile) { //builds graph
     file_ = poiFile;
     insertPOIs();
     insertDistances();
 }
 
-void POIGraph::insertPOIs() {
+void POIGraph::insertPOIs() { //helper function to add the nodes
     ifstream infile(file_.c_str());
     string lines;
 
@@ -28,7 +28,7 @@ void POIGraph::insertPOIs() {
     infile.close();
 }
 
-void POIGraph::insertDistances() {
+void POIGraph::insertDistances() {  //helper function to add the edges
     //read from data and use .insertEdge(source id, end id, distance)
     //use findDistance(source id, dest id) to find the distance
     ifstream infile(file_.c_str());
@@ -50,7 +50,7 @@ void POIGraph::insertDistances() {
 
 }
 
-vector<string> POIGraph::BFS(int source) {
+vector<string> POIGraph::BFS(int source) { //bfs traversal for our graph
     vector<bool> visited(20558);
     for (int i = 0; i < 20558; i++) {
         visited[i] = false;
@@ -83,7 +83,7 @@ vector<string> POIGraph::BFS(int source) {
     return rv;
 }
 
-vector<string> POIGraph::BFS(int source, int dest) {
+vector<string> POIGraph::BFS(int source, int dest) { //bfs traversal that returns all nodes on a path between the two inputs
     vector<bool> visited(20558);
     for (int i = 0; i < 20558; i++) {
         visited[i] = false;
@@ -132,9 +132,7 @@ vector<string> POIGraph::BFS(int source, int dest) {
     return rv;
 }
 
-tuple<vector<string>, double> POIGraph::dijkstra(int source, int dest) {
-
-    // @TODO: Insert Edge Cases
+tuple<vector<string>, double> POIGraph::dijkstra(int source, int dest) { //our implemenataion og djikstra's algorithm
 
     vector<double> dist(20558);
     vector<int> prev(20558);
@@ -199,7 +197,7 @@ tuple<vector<string>, double> POIGraph::dijkstra(int source, int dest) {
     return tuple<vector<string>,double> (path, dist[dest]);
 }
 
-tuple<vector<string>, double> POIGraph::middle(int source, int mid, int dest) {
+tuple<vector<string>, double> POIGraph::middle(int source, int mid, int dest) { //uses djikstra's and includes a middle point
     tuple<vector<string>, double> first = dijkstra(source, mid);
     tuple<vector<string>, double> second = dijkstra(mid, dest);
     if (get<0>(first).empty() || get<0>(second).empty()) {
@@ -214,7 +212,8 @@ tuple<vector<string>, double> POIGraph::middle(int source, int mid, int dest) {
     return rv;
 }
 
-vector<string> POIGraph::parseLoc(const string& line) {
+//returns a vector in the form [latitude, longitude] and reads it from the line
+vector<string> POIGraph::parseLoc(const string& line) { //parses 
     vector<string> rv;
     stringstream ss(line);
     while (ss.good()) {
@@ -225,6 +224,7 @@ vector<string> POIGraph::parseLoc(const string& line) {
     return rv;
 }
 
+//returns a vector in the form [id, latitude, longitude] and reads it from the line
 vector<string> POIGraph::parseLine(const string& line) {
     vector<string> rv;
     stringstream ss(line);
@@ -238,19 +238,18 @@ vector<string> POIGraph::parseLine(const string& line) {
 
 int POIGraph::Centrality (string poi) {
     unordered_map<string, int> check;
-    // Go through every combination of two vertices
+    // check for node in all paths
     for(unsigned i = 0; i < map_.interest_map.size()-1; i++){
         for(unsigned j = i+1; j < map_.interest_map.size(); j++){
             tuple<vector<string>, double> retval = dijkstra(map_.interest_map[i].id, map_.interest_map[j].id);
             vector<string> path = get<0>(retval);
             if(path.size() > 2){
-                for(unsigned k = 1; k < path.size()-1; k++){
-                    check[path[k]] = check[path[k]] + 1; //for each inner node increment their centrality measure
+                for(unsigned k = 1; k < path.size()-1; k++){ //increment centrality when node is in the path
+                    check[path[k]] = check[path[k]] + 1; 
                 }
             }
             
         }
     }
-    return check[poi]; //return the centrality measure of the requested vertex
-}
+    return check[poi]; //return the centrality
 
