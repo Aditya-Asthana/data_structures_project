@@ -12,7 +12,7 @@ Open the repo in VSCode using open folder in container, and select Dockerfile.
 
 Use "cd build" in the terminal to get to our build folder.
 
-Run "make" in your terminal. This will create the main executable.
+Run "make" in your terminal. This will create the main executable. If you have an issue with make, enter "clear" first and then try again.
 
 Then run "./main" in your terminal. This will run our program.
 
@@ -24,7 +24,7 @@ Open the repo in VSCode using open folder in container, and select Dockerfile.
 
 To test our code, enter "cd build" in the terminal to get to our build folder.
 
-Run "make" in your terminal.
+Run "make" in your terminal. If you have an issue with make, enter "clear" first and then try again.
 
 Then run "./test" in your terminal. This will run our test cases.
 
