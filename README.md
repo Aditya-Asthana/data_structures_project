@@ -8,7 +8,7 @@ Our project's leading question was "What is the best way to get between points o
 First, paste the following command in your terminal to download our program: "git clone https://github.com/Aditya-Asthana/data_structures_project.git".
 Our project uses a clang++ and a Makefike to compile, so we build and run the executable with the following method.
 
-Use "cd Build" in the terminal to get to our build folder.
+Use "cd build" in the terminal to get to our build folder.
 
 Run "make" in your terminal. This will create the main executable.
 
@@ -18,7 +18,13 @@ Our outputs will print in the terminal.
 
 # Testing
 
-ADD INFORMATION ABOUT HOW TO RUN TEST CASES
+To test our code, enter "cd build" in the terminal to get to our build folder.
+
+Run "make" in your terminal.
+
+Then run "./test" in your terminal. This will run our test cases.
+
+Our test cases use a portion of the dataset and test if our graph builds correctly. It also makes sure our implementation Djikstra's algorithm and the betweenness centrality algorithm are functioning correctly.
 
 # Understanding our repo
 
