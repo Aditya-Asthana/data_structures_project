@@ -8,6 +8,8 @@ Our project's leading question was "What is the best way to get between points o
 First, paste the following command in your terminal to download our program: "git clone https://github.com/Aditya-Asthana/data_structures_project.git".
 Our project uses a clang++ and a Makefike to compile, so we build and run the executable with the following method.
 
+Open the repo in VSCode using open folder in container, and select Dockerfile.
+
 Use "cd build" in the terminal to get to our build folder.
 
 Run "make" in your terminal. This will create the main executable.
@@ -17,6 +19,8 @@ Then run "./main" in your terminal. This will run our program.
 Our outputs will print in the terminal.
 
 # Testing
+
+Open the repo in VSCode using open folder in container, and select Dockerfile.
 
 To test our code, enter "cd build" in the terminal to get to our build folder.
 
